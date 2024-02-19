@@ -17,12 +17,6 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-
-      - name: Configure Kubeconfig
-        run: |
-          echo "${{ secrets.KUBECONFIG }}" > ${GITHUB_WORKSPACE}/kubeconfig
-          echo "KUBECONFIG_PATH=${GITHUB_WORKSPACE}/kubeconfig" >> $GITHUB_ENV
-
       - name: Verify Kubeconfig Path
         run: |
           echo "Checking if kubeconfig file exists at ${GITHUB_WORKSPACE}/kubeconfig"
@@ -32,6 +26,6 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="kubeconfig_content=${{ secrets.KUBECONFIG }}"
         env:
           TF_VAR_kubeconfig_path: ${{ env.KUBECONFIG_PATH }}
