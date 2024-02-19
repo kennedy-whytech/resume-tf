@@ -39,6 +39,6 @@ resource "kubernetes_config_map" "webapp_config" {
       </body>
       </html>
     EOT
-    "title" = "Kennedy's Production !" 
+    "title" = "Kennedy's Production Test" 
   }
 }
