@@ -1,0 +1,29 @@
+name: Terraform Apply on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  terraform-apply:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Configure Kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" > kubeconfig
+          echo "KUBECONFIG_PATH=${GITHUB_WORKSPACE}/kubeconfig" >> $GITHUB_ENV
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        env:
+          KUBECONFIG: ${{ env.KUBECONFIG_PATH }}
