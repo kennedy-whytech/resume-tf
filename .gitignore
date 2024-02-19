@@ -3,3 +3,4 @@ SECRETS/
 terraform.tfstate
 terraform.tfstate.backup
 .terraform
+kubeconfig
