@@ -32,4 +32,4 @@ jobs:
         run: terraform apply -auto-approve
         env:
           TF_VAR_kubeconfig_path: ${{ env.KUBECONFIG_PATH }}
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
