@@ -20,7 +20,11 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Append kubeconfig to terraform.tfvars file
+        run: |
+          echo "kubeconfig_content=\"${{ secrets.KUBECONFIG }}\"" >> terraform.tfvars
+    
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var="kubeconfig_content=${{ secrets.KUBECONFIG }}"
+        run: terraform apply -auto-approve
         env:
           TF_VAR_kubeconfig_path: ${{ env.KUBECONFIG_PATH }}
