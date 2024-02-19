@@ -26,4 +26,4 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
-          KUBECONFIG: ${{ env.KUBECONFIG_PATH }}
+          TF_VAR_kubeconfig_path: ${{ env.KUBECONFIG_PATH }}
