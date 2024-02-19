@@ -27,9 +27,11 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        env:
+          TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
           TF_VAR_kubeconfig_path: ${{ env.KUBECONFIG_PATH }}
-          TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
