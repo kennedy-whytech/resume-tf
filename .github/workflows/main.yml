@@ -17,11 +17,6 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Verify Kubeconfig Path
-        run: |
-          echo "Checking if kubeconfig file exists at ${GITHUB_WORKSPACE}/kubeconfig"
-          ls -l ${GITHUB_WORKSPACE}/kubeconfig
-
       - name: Terraform Init
         run: terraform init
 
