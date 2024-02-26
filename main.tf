@@ -34,7 +34,7 @@ resource "kubernetes_config_map" "webapp_config" {
           <title>Config</title>
       </head>
       <body>
-          <h1>This is mounted to ConfigMap</h1>
+          <h1>This is mounted to ConfigMap. Testing~</h1>
           <a href="/">Go Home</a>
       </body>
       </html>
