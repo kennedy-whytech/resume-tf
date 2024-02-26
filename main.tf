@@ -34,11 +34,11 @@ resource "kubernetes_config_map" "webapp_config" {
           <title>Config</title>
       </head>
       <body>
-          <h1>This is mounted to ConfigMap. Testing~</h1>
+          <h1>This is mounted to ConfigMap. text</h1>
           <a href="/">Go Home</a>
       </body>
       </html>
     EOT
-    "title" = "Kennedy's Production" 
+    "title" = "Kennedy's text" 
   }
 }
